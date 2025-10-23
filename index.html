@@ -1,1 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deans Massive Dino Game Part 1 </title>
+    <style>
+        *{
+            font-family: "Comic Sans MS";
+        }
+        .box{
+            background-color:gainsboro; 
+        }
+        h1{
+            font-size:67px ;
+        }
+        #PlayGame{
+            position: absolute;
+            top: 200px;
+            left: 0;
+            right: 10px;
+            bottom: 0;
 
+        }
+        img{
+            position: absolute;
+            right: 0;
+        }
+        #stuff{
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: 50%;
+        }
+    </style>
+</head>
+<body> 
+    <div class="box"><h1>Deans Massive Dino Game</h1></div>
+    <div class="box" id="PlayGame">
+    <img src="./bground.png" id="bgr1">
+    <img src="./bground.png" id="bgr2">
+    <img src="./dean.png" id="dean">
+    <img src="./bomboya.gif" style="top:256px;" id="bomboya">
+    <img src="./banna.png" id="banna">
+    <div class="box" id="stuff">
+    <button id="button">CLick me to start</button>
+    <button id="button2">Description</button>
+    <button id="something" onclick="location.href='https://w-chat-pht6.onrender.com'">w chat</button>
+    </div>
+</div>
+
+<script>
+    button.onclick = function(){
+        alert("Hi you have started this skibidi game")
+    loop()
+    }
+    button2.onclick = function(){
+        alert("Please be patient first build and game is probally really crappy\nfrom OilyVera")
+    }
+    let x = 0
+    let x2 = 1024
+    let y = 0
+    let vy = 0
+    let btm = 0
+    function loop(){
+        bgr1.style.right = x+"px"
+        bgr2.style.right = (x+1024)+"px"
+        bomboya.style.right = (x+1024)+"px"
+        dean.style.top = y+"px"
+        banna.style.right = (x2+512)+"px"
+        x-=2
+        x2-=2
+        vy += 0.25
+        y = Math.min(btm,y+vy)
+        if (x2 < -1024){
+            x2 = 0
+        }
+        if (x < -1024){
+            x = 0
+        }
+        if (x+1024 <= 256 && x+1024 >= 200 && y >= 0){
+            bomboya.src="./boom.png"
+            alert(":(")
+            x=0
+            x2=0
+        }
+        if (x2+512 <= 256 && x2+512 >= 200 && y <= 0){
+            alert(":(")
+            x=0
+            x2=0
+        }
+        requestAnimationFrame(loop)
+    }
+    addEventListener("keypress", (e)=>{
+        if (y == 0){
+            if (e.key == "l"){
+                vy = -15
+            }
+            if (e.key == "d"){
+                btm = 256
+                vy = 15
+                setTimeout(()=>{btm=0},2000)
+            }
+        }
+    })
+</script>
+</body>
+</html>
